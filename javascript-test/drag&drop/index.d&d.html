@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./index.d&d.css">
+    <title>Drag&Drop</title>
+</head>
+<body>
+    <div class="hero">
+        <div class="wrapper">
+            <ul class="list">
+                <li class="list__caption">Planned</li>
+                <li class="list__caption">In dev</li>
+                <li class="list__caption">QA</li>
+                <li class="list__caption">Production</li>
+                <li class="list__cell js-cell">
+                    <div class="list__card js-card" 
+                        draggable="true">
+                        <div class="list__card-header">
+                            task title
+                        </div>
+                        <div class="list__card-info">
+                            tast description
+                        </div>
+                    </div>
+                </li>
+                <li class="list__cell js-cell"></li>
+                <li class="list__cell js-cell"></li>
+                <li class="list__cell js-cell"></li>
+            </ul>
+        </div>
+    </div>
+    <script src="./index.d&d.js"></script>
+</body>
+</html>

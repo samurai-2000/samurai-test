@@ -14,7 +14,7 @@ const toggle = () => {
         wrapper.style.display = 'flex'
         setTimeout(() => {
             modal.style.transform = 'translateY(0)'
-         }, 200)
+        }, 200)
     }
     
 }
@@ -22,7 +22,7 @@ const toggle = () => {
 btn_open.addEventListener('click', toggle)
 btn_close.addEventListener('click', toggle)
 
-document.addEventListener('click', (event)=> {
+document.addEventListener('click', (event) => {
     if (event.target == wrapper) {
         toggle()
     } else {
