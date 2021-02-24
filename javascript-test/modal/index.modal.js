@@ -23,9 +23,11 @@ btn_open.addEventListener('click', toggle)
 btn_close.addEventListener('click', toggle)
 
 document.addEventListener('click', (event) => {
+
     if (event.target == wrapper) {
         toggle()
     } else {
         event.stopImmediatePropagation()
     }
+    
 })
