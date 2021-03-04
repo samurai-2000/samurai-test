@@ -1,0 +1,17 @@
+@font-face {
+  font-family: Century;
+  src: url("/assets/fonts/GOTHIC.TTF");
+}
+
+.nav {
+  background: #212529;
+}
+
+h5 {
+  font-family: Century;
+  cursor: pointer;
+}
+
+h5:hover {
+  text-decoration: underline;
+}

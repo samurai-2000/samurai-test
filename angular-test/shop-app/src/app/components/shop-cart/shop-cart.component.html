@@ -1,0 +1,112 @@
+<div class="container" style="min-height: 100vh;">
+    <br>
+    <div class="row">
+        <div class="col text-center">
+            <h1>Корзина</h1>
+        </div>
+    </div>
+    <h2 *ngIf='items.length == 0' >Пусто :(</h2>
+    <div *ngIf='items.length != 0'>
+        <br>
+        <div class="row form">
+            <form onsubmit="return false;" (submit)='postCart(name.value,tel.value,email.value)' class="col-3 mb-3 form-col">
+                <input type="text" #name class="form-control" required placeholder="Ф.И.О или Ф.И.">
+                <input type="tel" #tel maxlength="11" class="form-control" required placeholder="8-(888)-888-88-88">
+                <input type="email" #email class="form-control" placeholder="name@example.com">
+                <div class="col col_button">
+                    <button type="submit" class="btn btn-danger btn-lg">Заказать</button>
+                </div>
+            </form>
+            <div  class="calc-box col-3 form-col">
+                <div class="card bg-light mb-3" style="margin: 1rem 0;">
+                    <div class="card-header bg-light text-dark ">Калькулятор</div>
+                    <div class="card-body text-dark">
+                        <select #priceList class="form-select">
+                            <option value="none" selected>Выберите товар</option>
+                            <option *ngFor='let prod of items' value="{{prod.price}}">{{prod.name}}</option>
+                            <option value="all">Все товары</option>
+                        </select>
+                        <input #count class="form-control" placeholder="Выберите количество" min="1" value="1" type="number">
+                        <button (click)='calcPrice(priceList.value, count.value)' type="button" class="btn btn-dark">Расчитать</button>
+                    </div>
+                    <div class="card-footer bg-light text-dark ">Итого: <span class="fw-bold">{{priceAll}}</span></div>
+                </div>
+            </div>
+        </div>
+        <h2 style="margin: 3rem 0;">Товары</h2>
+        <div class="row">
+            <div class="col prod-line">
+                <!-- product -->
+                <div class="card" style="width: 18rem; position: relative;" *ngFor='let prod of items; let i = index'>
+                    <img (click)='imgOpen(prod); open2 = true' src="{{prod.imageUrl}}" class="rounded card-img-top" alt="...">
+                    <div class="card-body p-0">
+                        <div class="row text-center">
+                            <h2 style="margin: 0.5rem 0" class="card-title">{{prod.name}}</h2>
+                        </div>
+                        <div class="col-info">
+                            <ul style="width: 100%;" class="list-group">
+                                <li class="list-group-item">Высота: <span> {{prod.height}} мм</span></li>
+                                <li class="list-group-item">Ширина: <span> {{prod.width}} мм</span></li>
+                                <li class="list-group-item">Длина: <span> {{prod.length}} мм</span></li>
+                            </ul>
+                            <h4 style="margin: 0.5rem 0;" class="card-text">{{prod.price}}₽</h4>
+                            <button style="margin: 1rem 0;" (click)='removeCart(prod)' class="btn btn-danger btn-lg">Из корзины<svg style="margin-left: 0.5rem" xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-cart-x" viewBox="1 1 16 16">
+                                <path d="M7.354 5.646a.5.5 0 1 0-.708.708L7.793 7.5 6.646 8.646a.5.5 0 1 0 .708.708L8.5 8.207l1.146 1.147a.5.5 0 0 0 .708-.708L9.207 7.5l1.147-1.146a.5.5 0 0 0-.708-.708L8.5 6.793 7.354 5.646z"/>
+                                <path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zm3.915 10L3.102 4h10.796l-1.313 7h-8.17zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+                              </svg></button>
+                            <button (click)='imgOpen(prod); open2 = true' style="margin: 0.1rem 0; margin-bottom: 0.5rem;" class="btn btn-dark">Подробнее</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- img-card -->
+        <div (click)='open2 = false' *ngIf='open2 == true' class="img-wrapper">
+            <div (click)='stop($event)' class="shadow rounded img-wrapper_box">
+                <button style="top: 0; left: 0;" (click)='open2 = false' type="button" class="btn-close"></button>
+                <div *ngFor='let item of openItem' class="row">
+                    <div class="col">
+                        <img style="user-select: none;" src="{{item.imageUrl}}" class="img-fluid" >
+                        <div class="col-card">
+                            <h2 style="margin: 1rem 0;" class="card-text">{{item.name}}</h2>
+                            <h3 style="margin: 1rem 0;" class="card-text">{{item.subcategory}}</h3>
+                            <p style="margin: 1rem 0" class="card-text">{{item.description}}</p>
+                            <table class="table">
+                                <tbody>
+                                    <tr>
+                                        <th>Высота</th>
+                                        <td class="text-end">{{item.height}} мм</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Ширина</th>
+                                        <td class="text-end">{{item.width}} мм</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Длина</th>
+                                        <td class="text-end">{{item.length}} мм</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <button style="margin: 1rem 0;" (click)='removeCart(item); open2 = false' class="btn btn-danger btn-lg">Из корзины<svg style="margin-left: 0.5rem" xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-cart-x" viewBox="1 1 16 16">
+                                <path d="M7.354 5.646a.5.5 0 1 0-.708.708L7.793 7.5 6.646 8.646a.5.5 0 1 0 .708.708L8.5 8.207l1.146 1.147a.5.5 0 0 0 .708-.708L9.207 7.5l1.147-1.146a.5.5 0 0 0-.708-.708L8.5 6.793 7.354 5.646z"/>
+                                <path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zm3.915 10L3.102 4h10.796l-1.313 7h-8.17zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+                              </svg></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- modal -->
+<div (click)='open3 = false' *ngIf='open3 == true' class="call-wrapper">
+    <div (click)='stop($event)' style="background: #212529" class="shadow rounded call-form text-center text-white p-4">
+        <button (click)='open3 = false' type="button" class="btn-close btn-close-white"></button>
+        <h5 style="margin-top: 1rem;">Благодарим Вас за покупку!</h5>
+        <h6 style="margin-top: 1rem;">С Вами свяжуться в ближайшее время для уточнения всех деталей заказа</h6>
+    </div>
+</div>
+

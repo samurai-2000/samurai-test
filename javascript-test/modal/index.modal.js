@@ -4,11 +4,11 @@ const btn_close = document.getElementById('close')
 const btn_open = document.getElementById('open')
 
 const toggle = () => {
-    
+
     if (getComputedStyle(wrapper).display == 'flex') {
         modal.style.transform = 'translateY(-120%)'
         setTimeout(() => {
-           wrapper.style.display = '' 
+            wrapper.style.display = ''
         }, 500)
     } else {
         wrapper.style.display = 'flex'
@@ -16,7 +16,7 @@ const toggle = () => {
             modal.style.transform = 'translateY(0)'
         }, 200)
     }
-    
+
 }
 
 btn_open.addEventListener('click', toggle)
@@ -29,5 +29,5 @@ document.addEventListener('click', (event) => {
     } else {
         event.stopImmediatePropagation()
     }
-    
+
 })

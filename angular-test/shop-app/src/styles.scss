@@ -1,0 +1,17 @@
+@import "~bootstrap/scss/bootstrap";
+
+html, body {
+    margin: 0;
+    height: 100%;
+    font-size: 1rem;
+    background: $gray-100;
+    overflow-x: hidden;
+    overflow-y: auto;
+    ::selection {background: $gray-900; color: white;}
+}
+
+shop-app {
+    height: 100%;
+    background: $gray-100;
+}
+

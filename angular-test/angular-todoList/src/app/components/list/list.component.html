@@ -1,0 +1,9 @@
+<div class="container">
+    <h3>Todo list</h3>
+    <ul *ngIf='show == true'>
+        <li *ngFor='let todo of search(); let i = index'>{{i+1}} {{todo.name}}: {{todo.age}}</li>
+    </ul>
+    <button (click)='switch()'>switch</button>
+    <input [(ngModel)]='myInput' type="text">
+    <span>{{myInput}}</span>
+</div>

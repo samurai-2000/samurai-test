@@ -1,0 +1,248 @@
+<div class="container" [ngStyle]='blur' style="min-height: 100vh;">
+    <br>
+    <div class="row">
+        <div class="col">
+            <button (click)='open = true' type="button" class="btn btn-dark">Добавить товар</button>
+            <button (click)='getProd(); open2 = true' type="button" class="btn btn-danger">Удалить товар</button>
+        </div>
+        <div class="col">
+            <button (click)='active2 = false; active = false; active3 = false; getCart()' type="button" class="btn btn-dark">Заказ</button>
+            <button (click)='active2 = true; active = false; active3 = false; getCall()' type="button" class="btn btn-dark">Звонок</button>
+            <button (click)='active3 = true; active2 = false; active = false; getAll()' type="button" class="btn btn-dark">База клиентов</button>
+            <button (click)='active = true; active2 = false; active3 = false; getOff()' type="button" class="btn btn-danger">Завершенные заказы</button>
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col">
+            <table class="table table-hover">
+                <thead>
+                  <tr>
+                    <th scope="col">№</th>
+                    <th scope="col">Ф.И.О.</th>
+                    <th scope="col">Телефон</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Дата</th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                  </tr>
+                </thead>
+                <tbody *ngIf='active2 == false && active == false && active3 == false'>
+                    <tr *ngFor='let item of cart;let i = index'>
+                        <th scope="row">{{i+1}}</th>
+                        <td>{{item.client.name}}</td>
+                        <td>{{item.client.phoneNumber}}</td>
+                        <td>{{item.client.email}}</td>
+                        <td>{{item.date}}</td>
+                        <td><button (click)='openCart(item.id); open3 = true' type="button" class="btn btn-outline-dark">Детали</button>
+                            <button (click)="offClient(item,'client')" type="button" class="btn btn-outline-danger">Завершить</button></td>
+                        <td><h5 style="margin: 0; margin-top: 8px;">Заказ</h5></td>
+                    </tr>
+                </tbody>
+                <tbody *ngIf='active2 == true && active == false'>
+                    <tr *ngFor='let item of call; let i = index'>
+                        <th scope="row">{{i+1}}</th>
+                        <td>{{item.name}}</td>
+                        <td>{{item.phoneNumber}}</td>
+                        <td>{{item.email}}</td>
+                        <td>{{item.date}}</td>
+                        <td><button (click)="offClient(item,'call')" type="button" class="btn btn-outline-danger">Завершить</button></td>
+                        <td><h5 style="margin: 0; margin-top: 8px;">Звонок</h5></td>
+                    </tr>
+                </tbody>
+                <tbody *ngIf='active3 == true && active == false'>
+                    <tr *ngFor='let all of clientAll; let i = index'>
+                        <th scope="row">{{i+1}}</th>
+                        <td>{{all.name}}</td>
+                        <td>{{all.phoneNumber}}</td>
+                        <td>{{all.email}}</td>
+                        <td>{{all.date}}</td>
+                        <td><h5 style="margin: 0; margin-top: 8px;">База</h5></td>
+                    </tr>
+                </tbody>
+                <tbody *ngIf='active == true && active2 == false'>
+                    <tr *ngFor='let off of cartsOff; let i = index'>
+                        <th scope="row">{{i+1}}</th>
+                        <td>{{off.client.name}}</td>
+                        <td>{{off.client.phoneNumber}}</td>
+                        <td>{{off.client.email}}</td>
+                        <td>{{off.date}}</td>
+                        <td><h5 style="margin: 0; margin-top: 8px;">Завершенный</h5></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- modal-add -->
+<div *ngIf='open == true' class="wrapper">
+    <form onsubmit="return false;" (submit)='addProd(name.value, cat.value, sub.value, desc.value, price.value, w.value, h.value, l.value)' class="row modl shadow rounded justify-content-center">
+        <button (click)='open = false' type="button" class="btn-close"></button>
+        <div class="row">
+            <div class="col text-center">
+                <h2>Добавить товар</h2>
+                <br>
+                <div class="row">
+                    <div class="col">
+                        <input required #name type="text" spellcheck="true" class="form-control" placeholder="Название товара"/>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col">
+                        <select required #cat class="form-select">
+                            <option selected>Категория</option>
+                            <option value="Лепнина">Лепнина</option>
+                            <option value="Скульптура">Скульптура</option>
+                            <option value="Эксклюзив">Эксклюзив</option>
+                        </select>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col">
+                        <select #sub class="form-select">
+                            <option selected value="Скульптура">Подкатегория</option>
+                            <option disabled></option>
+                            <option disabled>ЛЕПНИНА</option>
+                            <option *ngFor='let sub of subCategory' value="{{sub}}">{{sub}}</option>
+                            <option disabled></option>
+                            <option disabled>ЭКСКЛЮЗИВ</option>
+                            <option *ngFor='let sub of subCategory2' value="{{sub}}">{{sub}}</option>
+                        </select>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col">
+                        <textarea #desc class="form-control" placeholder="Описание товара"></textarea>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col">
+                        <input required #price type="number" class="form-control" placeholder="Цена"/>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-6">
+                        <input #h type="number" class="form-control" placeholder="Высота"/>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-6">
+                        <input #l type="number" class="form-control" placeholder="Длина"/>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-6">
+                        <input #w type="number" class="form-control" placeholder="Ширина"/>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col">
+                        <input required #img type="file" (change)='FileSelected($event)' class="form-control" placeholder="Изображение"/>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col">
+                        <button type="submit" class="btn btn-outline-danger">Отправить</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<!-- modal-delete -->
+<div *ngIf='open2 == true' class="wrapper" style="overflow-y: auto; align-items: start;">
+    <div class="row modl shadow rounded justify-content-center" style="width: 800px; height: auto;">
+        <button (click)='open2 = false' type="button" class="btn-close"></button>
+        <div class="row justify-content-center">
+            <div class="col-6">
+                <br>
+                <br>
+                <input #srch type="search" (change)="searchProd(srch.value)" class="form-control" placeholder="Поиск товаров...">
+                <br>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <br>
+                <table class="table table-hover">
+                    <thead>
+                      <tr>
+                        <th scope="col">№</th>
+                        <th scope="col">Название</th>
+                        <th scope="col">Категория</th>
+                        <th scope="col">Подкатегория</th>
+                        <th scope="col"></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor='let prod of prodLepnina; let i = index'>
+                        <th scope="row">{{i+1}}</th>
+                        <td>{{prod.name}}</td>
+                        <td>{{prod.category}}</td>
+                        <td>{{prod.subcategory}}</td>
+                        <td><button (click)=removeProd(prod.id) type="button" class="btn btn-outline-danger">Удалить</button></td>
+                      </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- modal-cart -->
+<div *ngIf='open3 == true' class="wrapper" style="overflow-y: auto; align-items: start;">
+    <div class="row modl shadow rounded justify-content-center" style="width: 800px; height: auto;">
+        <button (click)='open3 = false' type="button" class="btn-close"></button>
+        <div class="row">
+            <div class="col">
+                <br>
+                <table class="table table-hover">
+                    <thead>
+                      <tr>
+                        <th scope="col">№</th>
+                        <th scope="col">Название</th>
+                        <th scope="col">Категория</th>
+                        <th scope="col">Подкатегория</th>
+                        <th scope="col"></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor='let prod of CartOpen; let i = index'>
+                        <th scope="row">{{i+1}}</th>
+                        <td>{{prod.name}}</td>
+                        <td>{{prod.category}}</td>
+                        <td>{{prod.subcategory}}</td>
+                      </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- lock -->
+<div *ngIf='pass != true' class="lock-wrapper">
+    <div class="lock-wrapper_pass shadow rounded">
+        <div class="row justify-content-center align-items-center text-center">
+            <h5 style="margin: 0;">Введите пароль</h5>
+            <div class="col-9">
+                <br>
+                <form action="">
+                    <input required #pass (change)='check(pass.value)' type="password" class="form-control">
+                </form>
+                <br>
+            </div>
+        </div>
+    </div>
+</div>

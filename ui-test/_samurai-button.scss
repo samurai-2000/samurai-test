@@ -1,0 +1,157 @@
+$primary: hsl(232, 50%, 45%);
+$secondary: hsl(199, 18%, 40%);
+$success: hsl(123, 41%, 45%);
+$danger: hsl(1, 77%, 55%);
+$warning: hsl(33, 100%, 49%);
+$info: hsl(187, 100%, 38%);
+$light: hsl(0, 0%, 96%);
+$dark: hsl(0, 0%, 13%);
+
+$hover: #050505;
+$focus: #3b3b3b;
+
+%button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 1rem;
+    min-width: 45px;
+    height: 45px;
+    border: none;
+    outline: none;
+    text-transform: uppercase;
+    font-size: 1rem;
+    transition: 0.3s;
+    color: white;
+    border-radius: 100px;
+    cursor: pointer;
+}
+@mixin button-close {
+    width: 1.5rem;
+    height: 1.5rem;
+    padding: 0;
+    border: none;
+    outline: none;
+    transition: 0.3s;
+    background: transparent;
+    border-radius: 50%;
+    cursor: pointer;
+}
+@mixin button($color) {
+    @extend %button;
+    background: $color;
+}
+
+button.primary, a.primary {
+    @include button($primary);
+}
+button.primary:hover, a.primary:hover {
+    background: $primary - $hover;
+}
+button.primary:focus, a.primary:focus {
+    background: $primary - $hover;
+    box-shadow: 0 0 0 5px $primary + $focus;
+}
+
+button.secondary, a.secondary {
+    @include button($secondary);
+}
+button.secondary:hover, a.secondary:hover {
+    background: $secondary - $hover;
+}
+button.secondary:focus, a.secondary:focus {
+    background: $secondary - $hover;
+    box-shadow: 0 0 0 5px $secondary + $focus;
+}
+
+button.success, a.success {
+    @include button($success);
+}
+button.success:hover, a.success:hover {
+    background: $success - $hover;
+}
+button.success:focus, a.success:focus {
+    background: $success - $hover;
+    box-shadow: 0 0 0 5px $success + $focus;
+}
+
+button.danger, a.danger {
+    @include button($danger);
+}
+button.danger:hover, a.danger:hover {
+    background: $danger - $hover;
+}
+button.danger:focus, a.danger:focus {
+    background: $danger - $hover;
+    box-shadow: 0 0 0 5px $danger + $focus;
+}
+
+button.warning, a.warning {
+    @include button($warning);
+}
+button.warning:hover, a.warning:hover {
+    background: $warning - $hover;
+}
+button.warning:focus, a.warning:focus {
+    background: $warning - $hover;
+    box-shadow: 0 0 0 5px $warning + $focus;
+}
+
+button.info, a.info {
+    @include button($info);
+}
+button.info:hover, a.info:hover {
+    background: $info - $hover;
+}
+button.info:focus, a.info:focus {
+    background: $info - $hover;
+    box-shadow: 0 0 0 5px $info + $focus;
+}
+
+button.light, a.light {
+    @include button($light);
+    color: black;
+}
+button.light:hover, a.light:hover {
+    background: $light - $hover;
+}
+button.light:focus, a.light:focus {
+    background: $light - $hover;
+    box-shadow: 0 0 0 5px $light - $focus;
+}
+
+button.dark, a.dark {
+    @include button($dark);
+    color: white;
+}
+button.dark:hover, a.dark:hover {
+    background: $dark - $hover;
+}
+button.dark:focus, a.dark:focus {
+    background: $dark - $hover;
+    box-shadow: 0 0 0 5px $dark + $focus;
+}
+
+button.close, a.close {
+    @include button-close;
+    i {color: $dark + $focus;}
+}
+button.close:hover, a.close:hover {
+   i {color: $dark}
+}
+button.close:focus, a.close:focus {
+    box-shadow: 0 0 0 3px $primary + $focus;
+    i {color: $dark}
+}
+
+button.close-light, a.close {
+    @include button-close;
+    i {color: $light - $focus;}
+}
+button.close-light:hover, a.close-llight:hover {
+   i {color: $light}
+}
+button.close-light:focus, a.close-llight:focus {
+    box-shadow: 0 0 0 3px $light - $focus;
+    i {color: $light}
+}

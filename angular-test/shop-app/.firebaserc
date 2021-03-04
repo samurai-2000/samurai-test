@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "quickstart-1610458995288": {
+      "hosting": {
+        "shop-app": [
+          "quickstart-1610458995288"
+        ]
+      }
+    }
+  }
+}

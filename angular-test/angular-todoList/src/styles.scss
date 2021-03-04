@@ -1,0 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
+* {box-sizing: border-box; font-family: 'Open Sans', sans-serif;}
+
+html, body {
+    height: 100%;
+    margin: 0;
+    font-size: 1rem;
+}
+
+todo-list {
+    display: flex;
+    height: 100%;
+    flex-flow: column;
+}
+
+app-list {
+    flex: auto;
+}

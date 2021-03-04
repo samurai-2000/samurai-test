@@ -1,0 +1,112 @@
+<div class="container" style="height: auto; min-height: 100vh;">
+    <br>
+    <br>
+    <div class="row-button">
+        <button (click)='open2 = false' type="button" class="btn btn-dark btn-lg">Частные заказы</button>
+        <button (click)='open2 = true' type="button" class="btn btn-dark btn-lg">Государственные заказы</button>
+    </div>
+    <div *ngIf='open2 == false'>
+        <h2 class="text-center" style="margin-top: 5rem;">Частные заказы</h2>
+        <div class="row d-flex justify-content-center align-items-center" style="margin-top: 1rem;">
+            <blockquote style="margin: 3rem 0; border-top: 2px solid black; border-bottom: 2px solid black;">
+               <h3 class="text-center" style="margin: 2rem 0;">Фасадная гипсовая лепнина. Рустовые камни с мордой льва и капители колонн создавались индивидуально по размерам заказчика</h3> 
+            </blockquote>
+            <img class="rounded" src="\assets\img-content\EPSVkrEGGWw.jpg" alt="...">
+            <img class="rounded" src="\assets\img-content\hXYlMFZHlHI.jpg" alt="...">
+            <img class="rounded" src="\assets\img-content\s2NwB5jA0mQ.jpg" alt="...">
+            <img class="rounded" src="\assets\img-content\ouXVQohAeZo.jpg" alt="...">
+        </div>
+        <br>
+        <div class="row d-flex justify-content-center align-items-center" style="margin-top: 3rem;">
+            <blockquote style="margin: 5rem 0; border-top: 2px solid black; border-bottom: 2px solid black;">
+               <h3 class="text-center" style="margin: 2rem 0;">Искусное украшение арочного проема гипсовыми Самсона, держащими потолочную перегородку</h3> 
+            </blockquote>
+            <img class="rounded" src="\assets\img-content\oKQXLDbva6E.jpg" alt="...">
+            <img class="rounded" src="\assets\img-content\LjTZ_hrl0-M.jpg" alt="...">
+            <img style="width: 1235px;" class="rounded" src="\assets\img-content\kNvboqhzAY4.jpg" alt="...">
+        </div>
+        <br>
+        <div class="row d-flex justify-content-center align-items-center" style="margin-top: 3rem;">
+            <blockquote style="margin: 5rem 0; border-top: 2px solid black; border-bottom: 2px solid black;">
+               <h3 class="text-center" style="margin: 2rem 0;">Оформление банкет зала ресторана гипсовой лепниной</h3> 
+            </blockquote>
+            <img class="rounded" src="\assets\img-content\LscB44kfl7M.jpg" alt="...">
+            <img class="rounded" src="\assets\img-content\uURTViDmffU.jpg" alt="...">
+        </div>
+        <br>
+        <div class="row d-flex justify-content-center align-items-center" style="margin-top: 3rem;">
+            <blockquote style="margin: 5rem 0; border-top: 2px solid black; border-bottom: 2px solid black;">
+               <h3 class="text-center" style="margin: 2rem 0;">Оформление стены 3D-панелями</h3> 
+            </blockquote>
+            <img style="width: 600px;" class="rounded" src="\assets\img-content\UHJiVGWOvj8.jpg" alt="...">
+        </div>
+        <br>
+        <div class="row d-flex justify-content-center align-items-center" style="margin-top: 1rem;">
+            <blockquote style="margin: 3rem 0; border-top: 2px solid black; border-bottom: 2px solid black;">
+               <h3 class="text-center" style="margin: 2rem 0;">Декоративная лепнина из искусственного камня для фасада частного дома</h3> 
+            </blockquote>
+            <img style="width: 600px;" class="rounded" src="\assets\img-content-2\hZ8V-pZNJek.jpg" alt="...">
+            <img style="width: 600px;" class="rounded" src="\assets\img-content-2\JjJiCjTm-pQ.jpg" alt="...">
+            <img style="width: 600px;" class="rounded" src="\assets\img-content-2\roWxeCpx18M.jpg" alt="...">
+        </div>
+        <br>
+        <div class="row d-flex justify-content-center align-items-center" style="margin-top: 3rem;">
+            <blockquote style="margin: 5rem 0; border-top: 2px solid black; border-bottom: 2px solid black;">
+               <h3 class="text-center" style="margin: 2rem 0;">Фасадная гипсовая лепнина</h3> 
+            </blockquote>
+            <img class="rounded" style="width: 800px;" src="\assets\img-content-2\Z88cu-2z2B8.jpg" alt="...">
+        </div>
+        <div style="width: 100%; border: 2px solid black; margin: 5rem 0" class="box_button d-flex justify-content-center align-items-center">
+            <button (click)='open = true' style="margin: 5rem 0;" type="button" class="btn btn-danger btn-lg">Заказать звонок</button>
+        </div>
+    </div>
+
+
+    <div *ngIf='open2 != false'>
+        <br>
+        <br>
+        <div class="row d-flex justify-content-center align-items-center" style="margin-top: 3rem;">
+            <blockquote style="margin: 5rem 0; border-top: 2px solid black; border-bottom: 2px solid black;">
+               <h3 class="text-center" style="margin: 2rem 0;">Реставрация фасада дома детского творчества имени А. С. Пушкина</h3> 
+            </blockquote>
+            <img class="rounded" style="width: 600px;" src="\assets\img-content-2\VRrmFF9I_DM.jpg" alt="...">
+        </div>
+        <div class="row d-flex justify-content-center align-items-center" style="margin-top: 3rem;">
+            <blockquote style="margin: 5rem 0; border-top: 2px solid black; border-bottom: 2px solid black;">
+               <h3 class="text-center" style="margin: 2rem 0;">Реставрация фасада здания - памятника архитектурного наследия по адресу: город Самара, улица Куйбышева, дом 56. Июнь 2020 года</h3> 
+            </blockquote>
+            <img class="rounded" src="\assets\img-content-2\I85SMYZXXn8.jpg" alt="...">
+            <img  class="rounded" src="\assets\img-content-2\ZhS6z-rS7pA.jpg" alt="...">
+            <img class="rounded" src="\assets\img-content-2\Zf1GRcHEe0E.jpg" alt="...">
+            <img class="rounded" src="\assets\img-content-2\7mscN-gS-Kc.jpg" alt="...">
+            <img class="rounded" src="\assets\img-content-2\pphaS90mhkQ.jpg" alt="...">
+            
+        </div>
+        <div style="width: 100%; border: 2px solid black; margin: 5rem 0" class="box_button d-flex justify-content-center align-items-center">
+            <button (click)='open = true' style="margin: 5rem 0;" type="button" class="btn btn-danger btn-lg">Заказать звонок</button>
+        </div>
+    </div>
+</div>
+
+<!-- modal-call -->
+<div (click)='open = false' *ngIf='open != false' class="call-wrapper">
+    <div (click)='stop($event)' *ngIf='open3 == false' class="shadow rounded call-form text-center p-4">
+        <button (click)='open = false' type="button" class="btn-close"></button>
+        <br>
+        <h2>Заказать звонок</h2>
+        <form onsubmit="return false;" (submit)='addCall(name.value,tel.value)'>
+            <br>
+            <input required #name type="text" class="form-control" placeholder="Введите имя...">
+            <br>
+            <input required #tel type="tel" class="form-control" maxlength="11" placeholder="Введите телефон...">
+            <br>
+            <br>
+            <button style="margin: 0.5rem;" type="submit" class="btn btn-dark btn-lg">Заказать</button>
+        </form>
+    </div>
+    <div *ngIf='open3 == true' class="shadow rounded call-form text-center p-4">
+        <button (click)='open = false' type="button" class="btn-close"></button>
+        <h5 style="margin-top: 40%;">Благодарим Вас за заказ звонка!</h5>
+    </div>
+</div>
+    

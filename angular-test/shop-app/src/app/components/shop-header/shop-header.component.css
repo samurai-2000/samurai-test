@@ -1,0 +1,62 @@
+@font-face {
+  font-family: Century;
+  src: url("/assets/fonts/GOTHIC.TTF");
+}
+
+@font-face {
+  font-family: MS Gothic;
+  src: url("/assets/fonts/MSGOTHIC.TTF");
+}
+
+h1 {
+  font-family: Century;
+}
+
+h6 {
+  font-family: MS Gothic;
+  font-weight: 600;
+}
+
+h1:hover {
+  text-decoration: underline;
+}
+
+h5:hover {
+  text-decoration: underline;
+}
+
+.navbar {
+  background: #212529;
+}
+
+.btn {
+  margin: 0.5rem;
+}
+
+::-moz-selection {
+  background: white;
+  color: #212529;
+}
+
+::selection {
+  background: white;
+  color: #212529;
+}
+
+@media all and (max-width: 654px) {
+  .img-col {
+    display: none;
+  }
+  h5 {
+    font-size: 1rem;
+  }
+  h1 {
+    font-size: 2rem;
+  }
+  .container-fluid {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-flow: column;
+            flex-flow: column;
+  }
+}
